@@ -34,7 +34,7 @@ def predict():
                 # print(test_json)
                 all = pd.DataFrame(test_json)
                 test_ = pd.get_dummies(pd.DataFrame(test_json))
-                test = test_.reindex(columns=model_columns, fill_value=0)
+                test = test_.reindex(columns=model_cols, fill_value=0)
         
                 # Normalizing the columns
                 scaler = StandardScaler()
@@ -62,7 +62,7 @@ def predict():
         print(test_json)
         all = pd.read_json(test_json)
         test_ = pd.get_dummies(pd.read_json(test_json))
-        test = test_.reindex(columns=model_columns, fill_value=0)
+        test = test_.reindex(columns=model_cols, fill_value=0)
 
         # Normalizing the columns
         scaler = StandardScaler()
@@ -132,13 +132,11 @@ def update():
     return df
 
 if __name__ == '__main__':
-#     port = int(os.environ.get('PORT', 5000))
-    port = 35999
-
-    model_columns = joblib.load('model_columns.pkl')
+    model_cols = joblib.load('model_columns.pkl')
     print('Loading model...')
     gb = joblib.load('model.pkl')
     print('Model successfully loaded!')
-
+    
+    port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
         
