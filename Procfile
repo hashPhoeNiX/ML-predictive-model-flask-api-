@@ -1,1 +1,1 @@
-web: gunicorn -b :$PORT app:app
+web: gunicorn car_price_api:app
