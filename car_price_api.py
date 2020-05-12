@@ -15,13 +15,15 @@ from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import r2_score
 
 # API definition
+app = Flask(__name__)
 
 test_set = None
 
-app = Flask(__name__)
-
 model_cols = joblib.load('model_columns.pkl')
 print('Loading model...')
+gb = joblib.load('model.pkl')
+print('Model successfully loaded!')
+    
 @app.route('/')
 def main():
     return "Car Price Prediction"
@@ -134,9 +136,6 @@ def update():
     return df
 
 if __name__ == '__main__':
-    gb = joblib.load('model.pkl')
-    print('Model successfully loaded!')
-    
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
         
