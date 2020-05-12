@@ -132,7 +132,8 @@ def update():
     return df
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+#     port = int(os.environ.get('PORT', 5000))
+    port = 35999
 
     model_columns = joblib.load('model_columns.pkl')
     print('Loading model...')
