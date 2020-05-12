@@ -135,7 +135,7 @@ if __name__ == '__main__':
     try:
         port = int(sys.argv[1])
     except:
-        port = 8080
+        port = 8000
 
     model_columns = joblib.load('model_columns.pkl')
     print('Loading model...')
